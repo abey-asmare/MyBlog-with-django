@@ -1,0 +1,41 @@
+{% extends 'home/base.html' %}
+    {%  load crispy_forms_tags %}
+    {%  load static %}
+{% block content %}
+
+
+        <!-- page content -->
+        <header class="masthead" style="background-image: url({% static 'home/assets/img/post-bg.jpg' %})">
+            <div class="overlay"></div>
+            <div class="container">
+              <div class="row">
+                <div class="col-lg-8 col-md-10 mx-auto">
+                  <div class="page-heading">
+                    <h1>New Post</h1>
+
+                    <span class="subheading">You're going to make a great blog post!</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </header>
+        
+          <div class="container">
+            <div class="row">
+              <div class="col-lg-8 col-md-10 mx-auto">
+                <!-- form here  -->
+                  <form method="post" enctype="multipart/form-data">
+                      {%  csrf_token %}
+                      {{ form|crispy  }}
+                      {{ form.media }}
+                      <button class="btn-primary" >Post</button>
+                  </form>
+            </div>
+            </div>
+          </div>
+        <script>
+        CKEDITOR.replace('id_content');  // Replace 'id_content' with the actual field ID
+    </script>
+
+
+{% endblock content %}
